@@ -74,9 +74,9 @@
 
 	programs.niri.enable = true;
 
+	# Configure sddm
 	environment.etc."share/sddm/themes/noctalia-sddm".source = inputs.noctalia-sddm;
 
-	# Configure sddm
 	services.displayManager.sddm = {
 		enable = true;
 		wayland.enable = true;
