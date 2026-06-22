@@ -2,7 +2,7 @@
 
 {
 	imports = [
-		./config/niri/niri.nix
+		./features/nodejs.nix
 	];
 
 	home.username = "toni";
@@ -14,7 +14,7 @@
 		userName = "toni";
 		userEmail = "tonilopez0199@gmail.com";
 		
-		extraConfig = {
+		settings = {
 			pull.rebase = true;
 			core.editor = "vim";
 		};
@@ -26,6 +26,12 @@
 
 	programs.bash = {
 		enable = true;
+
+		sessionVariables = {
+			EDITOR = "vim";
+			VISUAL = "vim";
+		};
+
 		shellAliases = {
 			contrl = "echo test dotfiles config comes here";
 		};
@@ -38,13 +44,23 @@
 		obsidian
 		rclone
 		proton-authenticator
-		
+		thunderbird
+		pixieditor
+		chafa
+
+		tmux
+	
 		gh
 		yazi
+
 		neovim
 		gcc
+		gnumake
+		unzip
+		ripgrep
+		fd
 	];
-	
+
 	home.pointerCursor = {
 		package = pkgs.bibata-cursors;
 		name = "Bibata-Rainbow-Modern";
@@ -53,16 +69,4 @@
 		x11.enable = true;
 	};
 
-	systemd.user.services.noctalia-lock-on-start = {
-		Unit = {
-			Description = "Lock screen on session start";
-			After = [ "graphical-session.target" ];
-		};
-		Service = {
-			Type = "oneshot";
-			ExecStart = "${pkgs.bash}/bin/sh -c 'sleep 5 && ${pkgs.noctalia-shell}/bin/noctalia-shell ipc call lockScreen lock'";
-			Environment = "WAYLAND_DISPLAY=wayland-1";
-  		};
-		Install.WantedBy = [ "graphical-session.target" ];
-	};
 }

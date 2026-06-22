@@ -53,12 +53,21 @@
 		# desktop shell
 		noctalia-shell
 		xwayland-satellite
+
+		#cursor
+		adwaita-icon-theme
  	];
 
-	# Electron based apps config
+	programs.nix-ld.enable = true;
+
 	environment.sessionVariables = {
+		# Electron based apps config
 		NIXOS_OZONE_WL = "1";
 		ELECTRON_OZONE_PLATFORM_HINT = "auto";
+
+		# cursor variables
+		XCURSOR_THEME = "Adwaita";
+		XCURSOR_SIZE = "24";
 	};
 
 	environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
@@ -71,8 +80,14 @@
 	services.displayManager.sddm = {
 		enable = true;
 		wayland.enable = true;
-		theme = "noctalia-sddm";
+		# theme = "noctalia-sddm";
 		package = pkgs.kdePackages.sddm;
+
+		settings = {
+			Theme = {
+				CursorTheme = "noctalia-sddm";  
+			};
+		};
 	};
 
 	fonts.packages = with pkgs; [

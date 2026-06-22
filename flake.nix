@@ -7,8 +7,6 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		niri.url = "github:sodiboo/niri-flake";
-
 		noctalia-sddm = {
 			url = "github:mahaveergurjar/sddm/noctalia";
 			flake = false;
