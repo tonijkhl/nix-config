@@ -47,6 +47,7 @@
 		thunderbird
 		pixieditor
 		chafa
+		onlyoffice-desktopeditors
 
 		tmux
 	
