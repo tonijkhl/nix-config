@@ -26,6 +26,14 @@
 		pulse.enable = true;
 	};
 
+	# TTL packets number change
+	boot.kernel.sysctl = {
+		"net.ipv4.ip_default_ttl" = 65;
+		# IPv6
+		"net.ipv6.conf.all.hoop_limit" = 65;
+		"net.ipv6.conf.default.hoop_limit" = 65;
+	};
+
 	services.libinput.enable = true;
 
 	users.users.toni= {
