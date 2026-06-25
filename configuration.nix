@@ -64,7 +64,20 @@
 
 		#cursor
 		adwaita-icon-theme
+
+		# sddm dependencies
+		kdePackages.qt5compat
+		kdePackages.qtdeclarative
+		kdePackages.qtsvg
+
+		#phone webcam
+		scrcpy
+		droidcam
+		android-tools
  	];
+
+	boot.kernelModules = [ "v4l2loopback" ];
+	boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
 	programs.nix-ld.enable = true;
 
@@ -82,20 +95,29 @@
 
 	programs.niri.enable = true;
 
-	# Configure sddm
-	environment.etc."share/sddm/themes/noctalia-sddm".source = inputs.noctalia-sddm;
+	# sddm Configuration
+	# environment.etc."share/sddm/themes/noctalia-sddm".source = inputs.noctalia-sddm;
 
 	services.displayManager.sddm = {
 		enable = true;
 		wayland.enable = true;
+		wayland.compositor = "kwin";
+
 		# theme = "noctalia-sddm";
+		
 		package = pkgs.kdePackages.sddm;
 
 		settings = {
 			Theme = {
-				CursorTheme = "noctalia-sddm";  
+				CursorTheme = "Adwaita";  
 			};
 		};
+
+
+		theme = "${pkgs.runCommand "noctalia-sddm" {} ''
+			mkdir -p $out/share/sddm/themes
+			cp -r ${inputs.noctalia-sddm} $out/share/sddm/themes/noctalia-sddm
+		''}";
 	};
 
 	fonts.packages = with pkgs; [

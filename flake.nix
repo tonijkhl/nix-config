@@ -8,9 +8,9 @@
 		};
 
 		noctalia-sddm = {
-			url = "github:mahaveergurjar/sddm/noctalia";
+			url = "github:mahaveergurjar/sddm?ref=noctalia";
 			flake = false;
-		};
+		};	
 	};
 
 	outputs = { self, nixpkgs, home-manager, ... }@inputs: {
