@@ -47,19 +47,36 @@
 		thunderbird
 		pixieditor
 		chafa
+
+		# audio interface
+		guitarix
+		crosspipe
+		pipewire
+		pipewire.jack
+
+		# office suite
 		onlyoffice-desktopeditors
 
-		tmux
-	
+		tmux	
 		gh
 		yazi
 
+		# neovim
 		neovim
 		gcc
 		gnumake
 		unzip
 		ripgrep
 		fd
+
+		# PDF, CBZ, DJVU viewer
+		( zathura.override {
+      			plugins = with zathuraPkgs; [
+        			zathura_pdf_mupdf
+        			zathura_djvu
+        			zathura_cb
+      			];
+    		})
 	];
 
 	home.pointerCursor = {

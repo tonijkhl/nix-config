@@ -23,7 +23,12 @@
 	services.pipewire = {
 		enable = true;
 		alsa.enable = true;
+		alsa.support32Bit = true;
 		pulse.enable = true;
+		jack.enable = true;
+
+		# force jack
+		wireplumber.enable = true;
 	};
 
 	# TTL packets number change
@@ -76,8 +81,12 @@
 		android-tools
  	];
 
+	#phone webcam
 	boot.kernelModules = [ "v4l2loopback" ];
 	boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  	boot.extraModprobeConfig = ''
+    		options v4l2loopback devices=1 exclusive_caps=1 card_label="DroidCam" video_nr=9 max_width=1920 max_height=1080
+	'';
 
 	programs.nix-ld.enable = true;
 
