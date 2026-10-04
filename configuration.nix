@@ -67,7 +67,7 @@
 		noctalia-shell
 		xwayland-satellite
 
-		#cursor
+		# cursor
 		adwaita-icon-theme
 
 		# sddm dependencies
@@ -75,10 +75,18 @@
 		kdePackages.qtdeclarative
 		kdePackages.qtsvg
 
-		#phone webcam
+		# phone webcam
 		scrcpy
 		droidcam
 		android-tools
+
+		# network-tools
+		iw
+		aircrack-ng
+		wpa_supplicant
+		python3
+		pixiewps
+		python313Packages.wcwidth
  	];
 
 	#phone webcam

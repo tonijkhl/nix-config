@@ -32,6 +32,11 @@
 			VISUAL = "vim";
 		};
 
+		# initialize starship on startup
+		initExtra = ''
+      			eval "$(starship init bash)"
+    		'';
+
 		shellAliases = {
 			contrl = "echo test dotfiles config comes here";
 		};
@@ -47,6 +52,8 @@
 		thunderbird
 		pixieditor
 		chafa
+		qbittorrent
+		vlc
 
 		# audio interface
 		guitarix
@@ -57,9 +64,11 @@
 		# office suite
 		onlyoffice-desktopeditors
 
-		tmux	
+		# CLI & Shell
+		tmux
 		gh
 		yazi
+		starship
 
 		# neovim
 		neovim
