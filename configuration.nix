@@ -41,9 +41,16 @@
 
 	services.libinput.enable = true;
 
+	# Enable I2C support so userspace tools can talk the monitor over DDC/CI
+	hardware.i2c.enable = true;
+
+	# Load the i2c-dev and v4l2loopback kernel modules
+	boot.kernelModules = [ "i2c-dev" "v4l2loopback" ];
+
+
 	users.users.toni= {
 		isNormalUser = true;
-		extraGroups = [ "wheel" "input" "video" ];
+		extraGroups = [ "wheel" "input" "video" "i2c" ];
 		packages = with pkgs; [
 			tree
 		];
@@ -87,10 +94,19 @@
 		python3
 		pixiewps
 		python313Packages.wcwidth
+
+		# monitor brightness
+		ddcutil
+
+
+		(runCommand "noctalia-sddm-theme" {} ''
+			mkdir -p $out/share/sddm/themes
+			cp -r ${inputs.noctalia-sddm} $out/share/sddm/themes/noctalia-sddm
+		'')
  	];
 
-	#phone webcam
-	boot.kernelModules = [ "v4l2loopback" ];
+	# phone webcam
+	# boot.kernelModules = [ "v4l2loopback" ];
 	boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
   	boot.extraModprobeConfig = ''
     		options v4l2loopback devices=1 exclusive_caps=1 card_label="DroidCam" video_nr=9 max_width=1920 max_height=1080
@@ -120,22 +136,23 @@
 		wayland.enable = true;
 		wayland.compositor = "kwin";
 
-		# theme = "noctalia-sddm";
+		theme = "noctalia-sddm";
 		
 		package = pkgs.kdePackages.sddm;
+
+		extraPackages = with pkgs.kdePackages; [
+    			qt5compat # Provides Qt5 graphical compatibility in Qt6 SDDM
+    			qtdeclarative
+    			qtsvg
+  		];
 
 		settings = {
 			Theme = {
 				CursorTheme = "Adwaita";  
 			};
 		};
-
-
-		theme = "${pkgs.runCommand "noctalia-sddm" {} ''
-			mkdir -p $out/share/sddm/themes
-			cp -r ${inputs.noctalia-sddm} $out/share/sddm/themes/noctalia-sddm
-		''}";
 	};
+
 
 	fonts.packages = with pkgs; [
 		nerd-fonts.jetbrains-mono
