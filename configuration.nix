@@ -47,10 +47,12 @@
 	# Load the i2c-dev and v4l2loopback kernel modules
 	boot.kernelModules = [ "i2c-dev" "v4l2loopback" ];
 
+	# Enable docker daemon
+	virtualisation.docker.enable = true;
 
 	users.users.toni= {
 		isNormalUser = true;
-		extraGroups = [ "wheel" "input" "video" "i2c" ];
+		extraGroups = [ "wheel" "input" "video" "i2c" "docker" ];
 		packages = with pkgs; [
 			tree
 		];
