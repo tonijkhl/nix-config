@@ -57,6 +57,7 @@
 		chafa
 		qbittorrent
 		vlc
+		anki
 
 		# audio interface
 		guitarix

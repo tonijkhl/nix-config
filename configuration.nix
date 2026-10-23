@@ -48,7 +48,13 @@
 	boot.kernelModules = [ "i2c-dev" "v4l2loopback" ];
 
 	# Enable docker daemon
-	virtualisation.docker.enable = true;
+	virtualisation.docker = {
+		enable = true;
+		daemon.settings = {
+			mtu = 1400;
+			dns = [ "1.1.1.1" "8.8.8.8" ];
+		};
+	};
 
 	users.users.toni= {
 		isNormalUser = true;
