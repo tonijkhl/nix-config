@@ -10,6 +10,7 @@
 
 	networking.hostName = "nixos-gg";
 	networking.networkmanager.enable = true;
+	networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 	
 	hardware.bluetooth.enable = true;
 	services.power-profiles-daemon.enable = true;
@@ -25,6 +26,10 @@
     		# acceleration it's for NVIDIA/AMD GPU
     		# acceleration = "cuda"; # or "rocm"
   	};
+
+	nixpkgs.config.permittedInsecurePackages = [
+    		"openclaw-2026.5.7"
+  	];
 
 	security.rtkit.enable = true;
 	services.pipewire = {

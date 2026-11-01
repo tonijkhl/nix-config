@@ -22,6 +22,7 @@
 			modules = [
 				./configuration.nix
 				home-manager.nixosModules.home-manager {			
+					nixpkgs.overlays = [ nix-openclaw.overlays.default ];
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;

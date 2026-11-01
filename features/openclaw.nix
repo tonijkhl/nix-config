@@ -7,6 +7,11 @@
 
   programs.openclaw = {
     enable = true;
+
+    bundledPlugins = {
+      summarize.enable = false;
+    };
+
     workspace = {
       bootstrapFiles = {
         agents = ./openclaw-workspace/AGENTS.md;
