@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.nix-openclaw.homeManagerModules.default
+    inputs.nix-openclaw.homeManagerModules.openclaw
   ];
 
   programs.openclaw = {
@@ -17,7 +17,6 @@
       };
     };
 
-    # Essential runtime binaries for your agent CLI toolkit
     runtimePackages = with pkgs; [
       git
       jq
