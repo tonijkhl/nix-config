@@ -8,7 +8,7 @@
   programs.openclaw = {
     enable = true;
 
-    tools = [
+    toolNames = [
       "git"
       "github"
       "filesystem"
