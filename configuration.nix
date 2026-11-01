@@ -19,6 +19,13 @@
 
 	services.printing.enable = true;
 
+	# Ollama service
+  	services.ollama = {
+    		enable = true;
+    		# acceleration it's for NVIDIA/AMD GPU
+    		# acceleration = "cuda"; # or "rocm"
+  	};
+
 	security.rtkit.enable = true;
 	services.pipewire = {
 		enable = true;

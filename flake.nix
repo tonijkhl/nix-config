@@ -11,9 +11,11 @@
 			url = "github:mahaveergurjar/sddm?ref=noctalia";
 			flake = false;
 		};	
+
+		nix-openclaw.url = "github:openclaw/nix-openclaw";
 	};
 
-	outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+	outputs = { self, nixpkgs, home-manager, nix-openclaw, ... }@inputs: {
 		nixosConfigurations.nixos-gg = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = { inherit inputs; };

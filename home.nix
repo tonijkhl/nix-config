@@ -3,6 +3,7 @@
 {
 	imports = [
 		./features/nodejs.nix
+		./features/openclaw.nix
 	];
 
 	home.username = "toni";
@@ -73,6 +74,7 @@
 		gh
 		yazi
 		starship
+		wl-clipboard
 
 		# neovim
 		neovim
@@ -81,6 +83,9 @@
 		unzip
 		ripgrep
 		fd
+
+		# AI
+		ollama
 
 		# PDF, CBZ, DJVU viewer
 		( zathura.override {
