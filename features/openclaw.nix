@@ -8,9 +8,12 @@
   programs.openclaw = {
     enable = true;
 
-    bundledPlugins = {
-      summarize.enable = false;
-    };
+    tools = [
+      "git"
+      "github"
+      "filesystem"
+    ];
+
 
     workspace = {
       bootstrapFiles = {
