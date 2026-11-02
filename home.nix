@@ -3,7 +3,6 @@
 {
 	imports = [
 		./features/nodejs.nix
-		./features/openclaw.nix
 	];
 
 	home.username = "toni";
@@ -12,12 +11,13 @@
 
 	programs.git = {
 		enable = true;
-		userName = "toni";
-		userEmail = "tonilopez0199@gmail.com";
 		
 		settings = {
 			pull.rebase = true;
 			core.editor = "vim";
+
+			user.name = "toni";
+			user.email = "tonilopez0199@gmail.com";
 
 			credential."https://github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
 			credential."https://gist.github.com".helper = "${pkgs.gh}/bin/gh auth git-credential";
@@ -86,6 +86,7 @@
 
 		# AI
 		ollama
+		openclaw
 
 		# PDF, CBZ, DJVU viewer
 		( zathura.override {

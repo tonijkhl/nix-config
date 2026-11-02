@@ -27,10 +27,6 @@
     		# acceleration = "cuda"; # or "rocm"
   	};
 
-	nixpkgs.config.permittedInsecurePackages = [
-    		"openclaw-2026.5.7"
-  	];
-
 	security.rtkit.enable = true;
 	services.pipewire = {
 		enable = true;
