@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable,... }:
 
 {
 	imports = [
@@ -85,8 +85,10 @@
 		fd
 
 		# AI
+		qwen-code
 		ollama
 		openclaw
+		pkgs-unstable.pi-coding-agent
 
 		# PDF, CBZ, DJVU viewer
 		( zathura.override {
